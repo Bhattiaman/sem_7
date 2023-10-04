@@ -3,78 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Audio Player</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #333;
-            color: white;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-        }
-
-        .audio-container {
-            margin: 20px auto;
-            max-width: 300px;
-        }
-
-        audio {
-            width: 100%;
-            outline: none;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .play-button,
-        .pause-button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            cursor: pointer;
-        }
-
-        .play-button:hover,
-        .pause-button:hover {
-            background-color: #2980b9;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <div class="audio-container">
-        <audio controls>
-            <source src="your-audio-file.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        <div class="controls">
-            <button class="play-button" id="play">Play</button>
-            <button class="pause-button" id="pause">Pause</button>
-        </div>
-    </div>
-
-    <script>
-        const audio = document.querySelector('audio');
-        const playButton = document.getElementById('play');
-        const pauseButton = document.getElementById('pause');
-
-        playButton.addEventListener('click', () => {
-            audio.play();
-        });
-
-        pauseButton.addEventListener('click', () => {
-            audio.pause();
-        });
-    </script>
+    <h4>hello</h4>
 </body>
 </html>
