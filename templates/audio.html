@@ -1,61 +1,134 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Audio Book Player</title>
-    <style>
-        #content {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="/assets/icons8-book-16.png" />
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    body {
+        background-image: url('background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #ecf0f1;
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.3s, color 0.3s; /* Add smooth transition */
+    }
+    .navbar {
+        background: linear-gradient(135deg, #3498db, #e74c3c, #2ecc71); /* Multicolored gradient background */
+    }
+    .navbar-brand {
+        color: #ecf0f1;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .navbar-nav li a {
+        color: #ecf0f1;
+        font-size: 18px;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+    }
+    .container {
+        margin-top: 20px;
+    }
+    .card {
+        background-color: #34495e;
+        color: #ecf0f1;
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
         }
-    </style>
-</head>
-<body>
-    <div id="content">
-        <h1>My Audio Book</h1>
-        <button id="playBtn">Play</button>
-        <button id="pauseBtn">Pause</button>
-        <div id="bookContent">
-            <!-- Replace this with the actual book content -->
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-        </div>
-    </div>
+    }
+    h1 {
+        font-size: 50px;
+    }
+    form {
+        margin-top: 20px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+    }
+    .btn-warning {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
 
+    /* Dark mode styles */
+    body.dark-mode {
+        background-color: #1b1b1b;
+        color: #ecf0f1;
+    }
+    .navbar.dark-mode {
+        background-color: #222;
+    }
+    .card.dark-mode {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+    }
+
+    /* White mode styles */
+    body.white-mode {
+        background-color: white;
+        color: #333;
+    }
+    .navbar.white-mode {
+        background-color: #f8f9fa;
+    }
+    .card.white-mode {
+        background-color: #f0f0f0;
+        color: #333;
+    }
+    .navbar-nav li a:hover {
+        color: black;
+    }
+    .navbar-brand:hover {
+      color: crimson;
+    }
+</style>
+<body class="dark-mode"> <!-- Default mode is dark mode -->
+
+    <nav class="navbar" style="background-color: black">
+      <a href="./" class="navbar-brand">𝕭𝖔𝖔𝖐 𝕽𝖊𝖈𝖔𝖒𝖒𝖊𝖓𝖉𝖊𝖗</a>
+      <ul class="nav navbar-nav">
+        <!-- <li><a href="./audio.html">Home</a></li> -->
+        <li><a href="/recommend">𝓡𝓮𝓬𝓸𝓶𝓶𝓮𝓷𝓭</a></li>
+        <li><a href="./audio.html">𝓐𝓾𝓭𝓲𝓸</a></li>
+        <li><a href="#" id="toggle-mode">𝓣𝓸𝓰𝓰𝓵𝓮 𝓜𝓸𝓭𝓮
+        </a></li>
+      </ul>
+    </nav>
+    <audio src="../songs/raatan.mp3" controls muted ></audio>
     <script>
-        const playButton = document.getElementById("playBtn");
-        const pauseButton = document.getElementById("pauseBtn");
-        const bookContent = document.getElementById("bookContent");
+        const toggleModeButton = document.getElementById('toggle-mode');
+        const body = document.body;
 
-        let currentParagraph = 0;
-        const paragraphs = bookContent.getElementsByTagName("p");
-        const speechSynthesis = window.speechSynthesis;
-        let utterance = new SpeechSynthesisUtterance();
-
-        function playParagraph() {
-            if (currentParagraph < paragraphs.length) {
-                const text = paragraphs[currentParagraph].textContent;
-                utterance.text = text;
-                speechSynthesis.speak(utterance);
-                utterance.onend = () => {
-                    currentParagraph++;
-                    playParagraph();
-                };
-            }
-        }
-
-        playButton.addEventListener("click", () => {
-            playButton.disabled = true;
-            pauseButton.disabled = false;
-            playParagraph();
-        });
-
-        pauseButton.addEventListener("click", () => {
-            speechSynthesis.pause();
-            playButton.disabled = false;
-            pauseButton.disabled = true;
+        toggleModeButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('white-mode');
         });
     </script>
-</body>
+  </body>
 </html>

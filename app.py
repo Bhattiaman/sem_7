@@ -6,6 +6,7 @@ popular_df = pickle.load(open('populars.pkl', 'rb'))
 pt = pickle.load(open('pt.pkl', 'rb'))
 books = pickle.load(open('books.pkl', 'rb'))
 similarity_scores = pickle.load(open('similarity_scores.pkl', 'rb'))
+from flask import send_file
 
 app = Flask(__name__)
 
@@ -50,6 +51,9 @@ def audio():
 @app.route('/style.css')
 def style_css():
     return render_template('style.css')
+
+def songs():
+    return send_file('../songs/raatan.mp3', as_attachment=True)
 
 @app.route('/script.js')
 def script_js():
