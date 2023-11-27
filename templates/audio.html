@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-      crossorigin="anonymous"/>
-    
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add font -->
@@ -18,95 +16,107 @@
     <!-- link to bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>Music Player</title>
-</head>
-<style>*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000; /* Ensure it's above other content */
-}
-html{
-    font-size: 14px;
-}
-body{
-    font-family: 'Open Sans', sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(34, 41, 41);
-    color: white;
-}
-@media (max-width:450px) {
-    
-}
-#container{
-    position: relative;
-    width: 20%;
-    background-image: url(images/music.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 20px;
-    text-align: center;
-}
-#container::before{
-    background-color: rgba(0, 0, 0, 0.951);
-    border-radius: 18px;
-    content: " ";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display:inline-block;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
 
-@media (max-width:1024px) {
-    #container{
-        width: 40%;
-    }
-}
-/* width setting for mobile device */
-@media (max-width:450px) {
-    #container{
-        width: 80%;
-    }
-}
-h1{
-    position: relative;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    z-index: 2;
-}
-#img{
-    position: relative;
-    width: 100%;
-    z-index: 2;
-}
-img{
-    width:80%;
-    border-radius: 50%;
-    border: white 2px;
-}
-#title{
-    position: relative;
-    z-index: 2;
-}
-#music_time{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    z-index: 2;
-    font-size: 0.8rem;
-}
-/* .rotate{
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        html {
+            font-size: 14px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(34, 41, 41);
+            color: white;
+        }
+
+        @media (max-width:450px) {}
+
+        #container {
+            position: relative;
+            width: 20%;
+            background-image: url(images/music.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        #container::before {
+            background-color: rgba(0, 0, 0, 0.951);
+            border-radius: 18px;
+            content: " ";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        @media (max-width:1024px) {
+            #container {
+                width: 40%;
+            }
+        }
+
+        /* width setting for mobile device */
+        @media (max-width:450px) {
+            #container {
+                width: 80%;
+            }
+        }
+
+        h1 {
+            position: relative;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            z-index: 2;
+        }
+
+        #img {
+            position: relative;
+            width: 100%;
+            z-index: 2;
+        }
+
+        img {
+            width: 80%;
+            border-radius: 50%;
+            border: white 2px;
+        }
+
+        #title {
+            position: relative;
+            z-index: 2;
+        }
+
+        #music_time {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+            font-size: 0.8rem;
+        }
+
+        /* .rotate{
     animation: rotate 3s linear infinite;
 }
 @keyframes rotate {
@@ -117,219 +127,257 @@ img{
         transform: rotate(360deg);
     }
 } */
-/* my default range setting */
-.slider {
-    position: relative;
-    z-index: 2;
-    -webkit-appearance: none;
-    height: 5px;
-    border-radius: 10px;
-    background: white;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-.slider:hover{
-    opacity: 1;
-}
-.slider::-ms-thumb{
-    width: 10px;
-    height: 10px;
-    border: none;
-    background:rgb(145, 143, 143);
-    cursor: pointer;
-    border-radius:50%;
-}
-.slider::-moz-range-thumb {
-    width: 10px;
-    height: 10px;
-    border: none;
-    background:rgb(145, 143, 143);
-    cursor: pointer;
-    border-radius:50%;
-}
-.slider::-webkit-slider-thumb{
-    width: 10px;
-    height: 10px;
-    border: none;
-    background-color:rgb(145, 143, 143);
-    cursor: pointer;
-    border-radius:50%;
-}
-#range{
-    margin-left: 10px;
-    margin-right: 10px;
-    width:65%;
-    align-self: center;
-}
-#music_functions{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    z-index: 2;
-}
-.function{
-    display: flex;
-    align-items: center;
-}
-#prev{
-    font-size: 3rem;
-    margin:0px 6px;
-    transition: color .3s;
-}
-#prev:hover{
-    color: rgb(145, 143, 143);
-}
-#prev:active{
-    color:black;
-}
-#play_pause{
-    font-size: 5rem;
-    margin:0px 6px;
-    transition: color .3s;
-}
-#play_pause:hover{
-    color: rgb(145, 143, 143);
-}
-#play_pause:active{
-    color:black;
-}
-#next{
-    font-size: 3rem;
-    margin: 0px 6px;
-    transition: color .3s;
-}
-#next:hover{
-    color: rgb(145, 143, 143);
-}
-#next:active{
-    color:black;
-}
-#volume{
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-}
-#vol{
-    align-self: center;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-    body {
-        background-image: url('background.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        color: #ecf0f1;
-        margin: 0;
-        padding: 0;
-        transition: background-color 0.3s, color 0.3s; /* Add smooth transition */
-    }
-    .navbar {
-        background: linear-gradient(135deg, #3498db, #e74c3c, #2ecc71); /* Multicolored gradient background */
-    }
-    .navbar-brand {
-        color: #ecf0f1;
-        font-size: 24px;
-        font-weight: bold;
-    }
-    .navbar-nav li a {
-        color: #ecf0f1;
-        font-size: 18px;
-    }
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
-    }
-    .container {
-        margin-top: 20px;
-    }
-    .card {
-        background-color: #34495e;
-        color: #ecf0f1;
-        border: none;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        opacity: 0;
-        animation: fadeIn 1s forwards;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    @keyframes fadeIn {
-        to {
+        /* my default range setting */
+        .slider {
+            position: relative;
+            z-index: 2;
+            -webkit-appearance: none;
+            height: 5px;
+            border-radius: 10px;
+            background: white;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
             opacity: 1;
         }
-    }
-    h1 {
-        font-size: 50px;
-    }
-    form {
-        margin-top: 20px;
-    }
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        font-size: 18px;
-    }
-    .btn-warning {
-        font-size: 18px;
-        padding: 10px 20px;
-    }
 
-    /* Dark mode styles */
-    body.dark-mode {
-        background-color: #1b1b1b;
-        color: #ecf0f1;
-    }
-    .navbar.dark-mode {
-        background-color: #222;
-    }
-    .card.dark-mode {
-        background-color: #2c3e50;
-        color: #ecf0f1;
-    }
+        .slider::-ms-thumb {
+            width: 10px;
+            height: 10px;
+            border: none;
+            background: rgb(145, 143, 143);
+            cursor: pointer;
+            border-radius: 50%;
+        }
 
-    /* White mode styles */
-    body.white-mode {
-        background-color: white;
-        color: #333;
-    }
-    .navbar.white-mode {
-        background-color: #f8f9fa;
-    }
-    .card.white-mode {
-        background-color: #f0f0f0;
-        color: #333;
-    }
-    .navbar-nav li a:hover {
-        color: black;
-    }
-    .navbar-brand:hover {
-      color: crimson;
-    }
-</style>
+        .slider::-moz-range-thumb {
+            width: 10px;
+            height: 10px;
+            border: none;
+            background: rgb(145, 143, 143);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .slider::-webkit-slider-thumb {
+            width: 10px;
+            height: 10px;
+            border: none;
+            background-color: rgb(145, 143, 143);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        #range {
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 65%;
+            align-self: center;
+        }
+
+        #music_functions {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .function {
+            display: flex;
+            align-items: center;
+        }
+
+        #prev {
+            font-size: 3rem;
+            margin: 0px 6px;
+            transition: color .3s;
+        }
+
+        #prev:hover {
+            color: rgb(145, 143, 143);
+        }
+
+        #prev:active {
+            color: black;
+        }
+
+        #play_pause {
+            font-size: 5rem;
+            margin: 0px 6px;
+            transition: color .3s;
+        }
+
+        #play_pause:hover {
+            color: rgb(145, 143, 143);
+        }
+
+        #play_pause:active {
+            color: black;
+        }
+
+        #next {
+            font-size: 3rem;
+            margin: 0px 6px;
+            transition: color .3s;
+        }
+
+        #next:hover {
+            color: rgb(145, 143, 143);
+        }
+
+        #next:active {
+            color: black;
+        }
+
+        #volume {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        #vol {
+            align-self: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+            /* Add smooth transition */
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #3498db, #e74c3c, #2ecc71);
+            /* Multicolored gradient background */
+        }
+
+        .navbar-brand {
+            color: #ecf0f1;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-nav li a {
+            color: #ecf0f1;
+            font-size: 18px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #34495e;
+            color: #ecf0f1;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .btn-warning {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #1b1b1b;
+            color: #ecf0f1;
+        }
+
+        .navbar.dark-mode {
+            background-color: #222;
+        }
+
+        .card.dark-mode {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        /* White mode styles */
+        body.white-mode {
+            background-color: white;
+            color: #333;
+        }
+
+        .navbar.white-mode {
+            background-color: #f8f9fa;
+        }
+
+        .card.white-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .navbar-nav li a:hover {
+            color: black;
+        }
+
+        .navbar-brand:hover {
+            color: crimson;
+        }
+    </style>
+
 <body class="dark-mode"> <!-- Default mode is dark mode -->
 
     <nav class="navbar" style="background-color: black">
-      <a href="./" class="navbar-brand">𝕭𝖔𝖔𝖐 𝕽𝖊𝖈𝖔𝖒𝖒𝖊𝖓𝖉𝖊𝖗</a>
-      <ul class="nav navbar-nav">
-        <!-- <li><a href="./audio.html">Home</a></li> -->
-        <li><a href="/recommend">𝓡𝓮𝓬𝓸𝓶𝓶𝓮𝓷𝓭</a></li>
-        <li><a href="./audio.html">𝓐𝓾𝓭𝓲𝓸</a></li>
-        <li><a href="#" id="toggle-mode">𝓣𝓸𝓰𝓰𝓵𝓮 𝓜𝓸𝓭𝓮
-        </a></li>
-      </ul>
+        <a href="./" class="navbar-brand">𝕭𝖔𝖔𝖐 𝕽𝖊𝖈𝖔𝖒𝖒𝖊𝖓𝖉𝖊𝖗</a>
+        <ul class="nav navbar-nav">
+            <!-- <li><a href="./audio.html">Home</a></li> -->
+            <li><a href="/recommend">𝓡𝓮𝓬𝓸𝓶𝓶𝓮𝓷𝓭</a></li>
+            <li><a href="./audio.html">𝓐𝓾𝓭𝓲𝓸</a></li>
+            <li><a href="#" id="toggle-mode">𝓣𝓸𝓰𝓰𝓵𝓮 𝓜𝓸𝓭𝓮</a></li>
+        </ul>
     </nav>
     <div id="container">
         <h1>Music Player</h1>
         <div id="img">
-            <img id="track_cover" src="images/music.png" alt="disc" width="250">
+            <img id="track_cover" src="./images/music.png"250">
         </div>
         <div id="title">
             <h3 id="track_title">track title</h3>
@@ -367,8 +415,134 @@ img{
             body.classList.toggle('dark-mode');
             body.classList.toggle('white-mode');
         });
+
+        const trackCover = document.querySelector("#track_cover");
+        const trackArtist = document.querySelector("#track_artist");
+        const trackTitle = document.querySelector("#track_title");
+        const currentMins = document.querySelector("#current_time_mins");
+        const currentSecs = document.querySelector("#current_time_secs");
+        const trackmins = document.querySelector("#track_mins");
+        const tracksecs = document.querySelector("#track_secs");
+        const prevBtn = document.querySelector("#prev");
+        const playPause = document.querySelector("#play_pause");
+        const nextBtn = document.querySelector("#next");
+        const trackRange = document.querySelector("#range");
+        const vol = document.querySelector("#vol");
+        const currentTrack = document.createElement("audio");
+        const container = document.querySelector("#container");
+
+        let isPlaying = false;
+        let trackIndex = 0;
+
+        const songs = [
+            {
+                artistName: "Ayra-Starr",
+                songName: "Rush",
+                img: "images/Ayra-Starr-Rush.webp",
+                music: "musics/Rush.mp3"
+            },
+            {
+                artistName: "Fireboy DML",
+                songName: "Sofri",
+                img: "images/Fireboy-DML-EP.webp",
+                music: "musics/Sofri.mp3"
+            },
+            {
+                artistName: "Ruger",
+                songName: "Girlfriend",
+                img: "images/Ruger-EP.webp",
+                music: "musics/Girlfriend.mp3"
+            },
+            {
+                artistName: "Zinoleesky",
+                songName: "Loving-You",
+                img: "images/Zinoleesky-Loving-You-Artwork.jpg",
+                music: "musics/Loving-You.mp3"
+            },
+            {
+                artistName: "Zinoleesky",
+                songName: "Rocking",
+                img: "images/Zinoleesky-Rocking-Artwork.jpg",
+                music: "musics/Rocking.mp3"
+            },
+        ];
+
+        loadTrack(trackIndex);
+        setInterval(fulltime, 1000);
+
+
+        function loadTrack(trackIndex) {
+            currentTrack.src = songs[trackIndex].music;
+            currentTrack.load();
+
+            trackCover.src = songs[trackIndex].img;
+            trackArtist.textContent = songs[trackIndex].artistName;
+            trackTitle.textContent = songs[trackIndex].songName;
+            container.style.backgroundImage = "url(" + songs[trackIndex].img + ")";
+            volume();
+        };
+        function next() {
+            if (trackIndex >= songs.length - 1) {
+                trackIndex = 0;
+            } else {
+                trackIndex++
+            }
+            loadTrack(trackIndex);
+            play();
+        };
+        function prev() {
+            if (trackIndex <= 0) {
+                trackIndex = songs.length - 1;
+            } else {
+                trackIndex--
+            }
+            loadTrack(trackIndex);
+            play();
+        };
+        function play_pause() {
+            isPlaying ? pause() : play();
+        };
+        function play() {
+            isPlaying = true;
+            currentTrack.play();
+            playPause.classList.remove("bi-play-circle");
+            playPause.classList.add("bi-pause-circle");
+        };
+        function pause() {
+            isPlaying = false;
+            currentTrack.pause();
+            playPause.classList.remove("bi-pause-circle");
+            playPause.classList.add("bi-play-circle");
+        };
+        function fulltime() {
+            const mins = String(Math.floor((currentTrack.duration) / 60)).padStart(2, "0");
+            const secs = String(Math.floor(currentTrack.duration - (mins * 60))).padStart(2, "0");
+
+            const currMins = String(Math.floor((currentTrack.currentTime) / 60)).padStart(2, "0");
+            const currSecs = String(Math.abs(Math.floor((currMins * 60) - currentTrack.currentTime))).padStart(2, "0");
+
+            trackmins.textContent = mins;
+            tracksecs.textContent = secs;
+            currentMins.textContent = currMins;
+            currentSecs.textContent = currSecs;
+
+
+
+            trackRange.value = currentTrack.currentTime;
+            trackRange.max = currentTrack.duration;
+
+
+            if (currentTrack.ended) {
+                next();
+            };
+        };
+        function volume() {
+            currentTrack.volume = vol.value / 11;
+        };
+        function seek() {
+            currentTrack.currentTime = trackRange.value;
+        }; j
     </script>
-  </body>
+</body>
+
 </html>
-
-
