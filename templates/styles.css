@@ -149,7 +149,7 @@ img{
 #prev{
     font-size: 3rem;
     margin:0px 6px;
-    transition: color .3s;
+    transition:ww color .3s;
 }
 #prev:hover{
     color: rgb(145, 143, 143);
